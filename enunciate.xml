@@ -1,0 +1,17 @@
+<enunciate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://enunciate.webcohesion.com/schemas/enunciate-2.0.0-M.4.xsd">
+
+    <title>Alex Bogner's Otus Challenge REST API</title>
+    <description package="abogner.otusChallenge"/>
+    <copyright>Alex Bogner</copyright>
+
+    <api-classes>
+        <include pattern="abogner.otusChallenge.rest.student.StudentResource"/>
+    </api-classes>
+
+    <modules>
+        <docs docsDir="src/main/webapp/restapi" title="Alex Bogner's Otus Challenge API"/>
+        <jackson disabled="true"/>
+        <swagger basePath="/abogner/api/"/>
+    </modules>
+
+</enunciate>

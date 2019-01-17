@@ -1,0 +1,350 @@
+{
+  "swagger": "2.0",
+  "info" : {
+    "description" : "<h1>otusChallenge Maven Webapp<\/h1>",
+    "version" : "1.0-SNAPSHOT",
+    "title" : "Alex Bogner's Otus Challenge REST API"
+  },
+  "basePath" : "/abogner/api/",
+  "schemes" : [],
+  "tags" : [
+    {
+      "name" : "StudentResource"
+    }
+  ],
+  "definitions" : {
+    "json_ClassGradeDTO" : {
+      "type" : "object",
+      "title" : "ClassGradeDTO",
+          "properties" : {
+            "className" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "grade" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number",
+"format" : "double"
+            }
+          },
+      "example" : {
+  "className" : "...",
+  "grade" : 12345.0
+},
+      "description" : ""
+    }
+    ,
+    "json_StudentDTO" : {
+      "type" : "object",
+      "title" : "StudentDTO",
+          "properties" : {
+            "firstName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "lastName" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "email" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "gpa" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "number",
+"format" : "double"
+            },
+            "grades" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_ClassGradeDTO"
+}
+            }
+          },
+      "example" : {
+  "firstName" : "...",
+  "lastName" : "...",
+  "email" : "...",
+  "gpa" : 12345.0,
+  "grades" : [ {
+    "className" : "...",
+    "grade" : 12345.0
+  }, {
+    "className" : "...",
+    "grade" : 12345.0
+  } ]
+},
+      "description" : ""
+    }
+    ,
+    "json_StudentListDTO" : {
+      "type" : "object",
+      "title" : "StudentListDTO",
+          "properties" : {
+            "students" : {
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/json_StudentDTO"
+}
+            }
+          },
+      "example" : {
+  "students" : [ {
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "gpa" : 12345.0,
+    "grades" : [ {
+      "className" : "...",
+      "grade" : 12345.0
+    }, {
+      "className" : "...",
+      "grade" : 12345.0
+    } ]
+  }, {
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "gpa" : 12345.0,
+    "grades" : [ {
+      "className" : "...",
+      "grade" : 12345.0
+    }, {
+      "className" : "...",
+      "grade" : 12345.0
+    } ]
+  } ]
+},
+      "description" : ""
+    }
+    ,
+    "xml_ns0_classGradeDTO" : {
+      "type" : "object",
+      "title" : "classGradeDTO",
+      "allOf" : [
+        {
+          "properties" : {
+            "className" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "grade" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "number",
+"format" : "double"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_studentDTO" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "studentDetail",
+        "namespace" : ""
+      },
+      "title" : "studentDTO",
+      "allOf" : [
+        {
+          "properties" : {
+            "email" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "firstName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            },
+            "gpa" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "number",
+"format" : "double"
+            },
+            "grades" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_classGradeDTO"
+}
+            },
+            "lastName" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "string"
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+    ,
+    "xml_ns0_studentListDTO" : {
+      "type" : "object",
+      "xml" : {
+        "name" : "studentList",
+        "namespace" : ""
+      },
+      "title" : "studentListDTO",
+      "allOf" : [
+        {
+          "properties" : {
+            "students" : {
+              "xml" : {
+                "namespace" : ""
+              },
+            "readOnly" : false,
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/definitions/xml_ns0_studentDTO"
+}
+            }
+          }
+        }
+      ],
+      "description" : ""
+    }
+  },
+  "paths": {
+    "\/students/details/{lastName}/{firstName}" : {
+      "get" : {
+        "tags" : [ "StudentResource" ],
+        "summary" : "Gets the details of the java.",
+        "description" : "Gets the details of the java.abogner.otusChallenge.rest.student with the exact first and last name provided.",
+        "operationId" : "getDetails",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "firstName",
+            "in" : "path",
+            "required" : false,
+            "type" : "string",
+            "description" : "case-insensitive first name"
+          },
+          {
+            "name" : "lastName",
+            "in" : "path",
+            "required" : false,
+            "type" : "string",
+            "description" : "case-insensitive last name"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+"$ref" : "#/definitions/json_StudentDTO"
+            },
+            "example" : {
+  "firstName" : "...",
+  "lastName" : "...",
+  "email" : "...",
+  "gpa" : 12345.0,
+  "grades" : [ {
+    "className" : "...",
+    "grade" : 12345.0
+  }, {
+    "className" : "...",
+    "grade" : 12345.0
+  } ]
+},
+            "description" : "the details of the java.abogner.otusChallenge.rest.student, including class list (with grades) and email"
+          }
+        }
+      }
+    }
+    ,
+    "\/students/search/{term}" : {
+      "get" : {
+        "tags" : [ "StudentResource" ],
+        "summary" : "Searches for all students that contain the provided search string in their first or last name.",
+        "description" : "Searches for all students that contain the provided search string in their first or last name",
+        "operationId" : "searchStudents",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [
+          {
+            "name" : "term",
+            "in" : "path",
+            "required" : false,
+            "type" : "string",
+            "description" : "case-insensitive string to be searched for"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "schema" : {
+"$ref" : "#/definitions/json_StudentListDTO"
+            },
+            "example" : {
+  "students" : [ {
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "gpa" : 12345.0,
+    "grades" : [ {
+      "className" : "...",
+      "grade" : 12345.0
+    }, {
+      "className" : "...",
+      "grade" : 12345.0
+    } ]
+  }, {
+    "firstName" : "...",
+    "lastName" : "...",
+    "email" : "...",
+    "gpa" : 12345.0,
+    "grades" : [ {
+      "className" : "...",
+      "grade" : 12345.0
+    }, {
+      "className" : "...",
+      "grade" : 12345.0
+    } ]
+  } ]
+},
+            "description" : "a list of all students and their combined GPAs"
+          }
+        }
+      }
+    }
+  }
+}

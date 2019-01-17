@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?enunciate-assumed-base-uri ./?>
+<wadl:application xmlns:wadl="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <wadl:doc xmlns:enunciate="http://enunciate.webcohesion.com/" enunciate:generatedBy="Enunciate-2.0"/>
+  
+  <wadl:grammars>
+    <wadl:include href="ns0.xsd"/>
+  </wadl:grammars>
+
+  <wadl:resources base="./">
+
+    <wadl:resource path="students/search/{term}">
+      <wadl:method name="GET">
+        <wadl:doc><![CDATA[Searches for all students that contain the provided search string in their first or last name]]></wadl:doc>
+        <wadl:request>
+        </wadl:request>
+        <wadl:response>
+          <wadl:doc><![CDATA[a list of all students and their combined GPAs]]></wadl:doc>
+          <wadl:representation mediaType="application/json"/>
+          <wadl:representation mediaType="application/xml" element="studentList"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:param name="term" style="template">
+        <wadl:doc><![CDATA[case-insensitive string to be searched for]]></wadl:doc>
+      </wadl:param>
+    </wadl:resource>
+
+    <wadl:resource path="students/details/{lastName}/{firstName}">
+      <wadl:method name="GET">
+        <wadl:doc><![CDATA[Gets the details of the java.abogner.otusChallenge.rest.student with the exact first and last name provided.]]></wadl:doc>
+        <wadl:request>
+        </wadl:request>
+        <wadl:response>
+          <wadl:doc><![CDATA[the details of the java.abogner.otusChallenge.rest.student, including class list (with grades) and email]]></wadl:doc>
+          <wadl:representation mediaType="application/json"/>
+          <wadl:representation mediaType="application/xml" element="studentDetail"/>
+        </wadl:response>
+      </wadl:method>
+      <wadl:param name="firstName" style="template">
+        <wadl:doc><![CDATA[case-insensitive first name]]></wadl:doc>
+      </wadl:param>
+      <wadl:param name="lastName" style="template">
+        <wadl:doc><![CDATA[case-insensitive last name]]></wadl:doc>
+      </wadl:param>
+    </wadl:resource>
+  </wadl:resources>
+</wadl:application>
